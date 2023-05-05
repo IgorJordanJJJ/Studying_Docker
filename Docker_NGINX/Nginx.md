@@ -26,3 +26,7 @@ cd /usr/share/nginx/html/
 
 * Assign a custom name to a container\
 Exampl: dokcer run -d --name mu_nginx nginx
+
+* Port forwarding nginx \
+docker run -p 8080:80 nginx\
+Exampl: docker run -v ${PWD}:/usr/share/nginx/html -p 8080:80 -d nginx

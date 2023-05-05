@@ -76,7 +76,11 @@ docker container inspect [id_container] | grep [information_you_need]\
 !!! working only linux and mack !!! 
 
 * Stop container\
-docker stop [id_container]/[name_docker] \
+docker stop [id_container]/[name_docker] 
+
+* Stopping multiple containers\
+docker stop [id_container]/[name_docker] [id_container]/[name_docker]
+
 
 Extreme case
 * docker kill [id_container]/[name_docker]\
@@ -88,6 +92,32 @@ Exapml: docker exec -it [id_container] bash
 
 * Assign a custom name to a container\
 dokcer run -d --name [custom_name] [name_container]\
+--name \
 Exampl: dokcer run -d --name mu_nginx nginx
 
 # Publishing ports and connecting volumes
+
+* Port forwarding \
+docker run -p [port_in_computer:port_in_docker] [name_container]\
+-p port 
+
+* Connecting Volumes\
+docke run -v \${[path_in_local_computer]}:[path_in_conatiner] [name_container]\
+docke run -v \${PWD}:[path_in_conatiner] [name_container]\
+-v volum\
+Exampl: docker run -v ${PWD}:/usr/share/nginx/html -p 8080:80 -d nginx
+
+* Automatic docker remover
+dokcer run --rm [] [name_container]\
+--rm \
+Exampl: docker run -it --rm busybox
+
+* One form of recording large commands\
+docker run \\ \
+--name my-nginx \\ \
+-v \${PWD}:/usr/share/nginx/html \\ \
+-p 8888:80 \\ \
+-d \\ \
+--rm \\ \
+nginx\
+!!! working only linux and mack !!!
