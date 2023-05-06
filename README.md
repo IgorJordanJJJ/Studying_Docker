@@ -153,14 +153,32 @@ dokcer run --rm [] [name_container]
 --rm \
 Exampl: docker run -it --rm busybox
 
-* One form of recording large commands\
+* One form of recording large commands
 ```shell
-docker run \
---name my-nginx \
--v \${PWD}:/usr/share/nginx/html \
--p 8888:80 \
--d \
---rm \
+docker run 
+--name my-nginx 
+-v \${PWD}:/usr/share/nginx/html 
+-p 8888:80 
+-d 
+--rm 
 nginx
 ```
 !!! working only linux and mack !!!
+
+* Add envirinent 
+```sh
+docker run -d -e [name_env]=[value] [name_image]
+```
+-e envariment
+
+Exampl docker run -d -e MY_ENV_VARIABLE=test nginx
+
+* Show all volume
+```sh
+docker volume ls 
+```
+
+* Show information about vokume
+```sh
+docker inspect [name_volume] 
+```

@@ -92,17 +92,82 @@ WORKDIR /app
 
 EXPOSE 5000
 
-COPY package* ./
+COPY package*.json ./
 
 RUN npm install
 
 COPY . . 
 
-CMD ["nmp", "run", "dev" ]
+CMD ["npm", "run", "dev" ]
 
 ```
 
+Example: yml file 
+```yml
+version: '3'
 
+services:
+  frontend:
+    build: ./frontend
+    restart: always
+    ports:
+      - '3000:3000'
+  api:
+    build: ./api
+    restart: always
+    ports:
+      - '5555:5000'
+    depends_on:
+      - mysql
+  mysql:
+    image: mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: time_db
+    volumes:
+      - mysql_data:/var/lib/mysql
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - '8888:8080'
 
+volumes:
+  mysql_data:
+```
 
+Example: yml file 
+```yml
+version: '3'
 
+services:
+  frontend:
+    build: ./frontend
+    restart: always
+    ports:
+      - '3000:3000'
+  api:
+    build: ./api
+    restart: always
+    ports:
+      - '5555:5000'
+    depends_on:
+      - mysql
+  mysql:
+    image: mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: time_db
+    volumes:
+      - mysql_data:/var/lib/mysql
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - '8888:8080'
+
+volumes:
+  mysql_data:
+```
