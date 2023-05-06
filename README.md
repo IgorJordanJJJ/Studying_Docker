@@ -8,19 +8,29 @@ https://www.docker.com
 
 # Basic Docker Commands  
 * This command show version and information about docker you computer   
+```shell
 docker version
+```
 
-* Show all container\
+* Show all container
+```shell
 docker ps -a
+```
 
-* Show run container\
+* Show run container
+```shell
 docker ps
+```
 
-* Show all images\
+* Show all images
+```shell
 docker images
+```
 
-* Create and start docker \
-docker run [name_you_docker]\
+* Create and start docker
+```shell
+docker run [name_you_docker]
+```
 
 Exampl: docker run hello-world\
 Then you well see
@@ -46,78 +56,111 @@ Share images, automate workflows, and more with a free Docker ID:
 For more examples and ideas, visit:
  https://docs.docker.com/get-started/
 
-* This command download image\
+* This command download image
+```shell
 docker pull [name_you_docker]
+```
 
 You can search for the docker you are interested in at\
 https://hub.docker.com
 
-* Removing the container\
+* Removing the container
+```shell
 docker rm id_container
+```
 
-* Run container and connect terminal\
-dokcer run -i -t busybox\
-dokcer run -it busybox\
+* Run container and connect terminal
+```shell
+dokcer run -i -t busybox
+dokcer run -it busybox
+```
 -i interactiv\
 -t terminal
 
-* Removing all container\
+* Removing all container
+```shell
 docker container prune
+```
 
-* Running the container in the background \
+* Running the container in the background 
+```shell
 docker run -d [name_you_docker]
+```
 -d daemon
 
-* See details of the container\
+* See details of the container
+```shell
 docker container inspect [id_container]
+```
 
-* See details of the container with filter the information you need\
-docker container inspect [id_container] | grep [information_you_need]\
+* See details of the container with filter the information you need
+```shell
+docker container inspect [id_container] | grep [information_you_need]
+```
 !!! working only linux and mack !!! 
 
-* Stop container\
+* Stop container
+```shell
 docker stop [id_container]/[name_docker] 
+```
 
-* Stopping multiple containers\
+* Stopping multiple containers
+```shell
 docker stop [id_container]/[name_docker] [id_container]/[name_docker]
+```
 
 
 Extreme case
-* docker kill [id_container]/[name_docker]\
+```shell
+docker kill [id_container]/[name_docker]
+```
 
-* Start an additional process in runing container\
-docker exec -it [id_container]/[name_container] [process]\
+* Start an additional process in runing container
+```shell
+docker exec -it [id_container]/[name_container] [process]
+```
 
 Exapml: docker exec -it [id_container] bash
 
-* Assign a custom name to a container\
-dokcer run -d --name [custom_name] [name_container]\
+* Assign a custom name to a container
+```shell
+dokcer run -d --name [custom_name] [name_container]
+```
 --name \
 Exampl: dokcer run -d --name mu_nginx nginx
 
 # Publishing ports and connecting volumes
 
-* Port forwarding \
-docker run -p [port_in_computer:port_in_docker] [name_container]\
+* Port forwarding 
+```shell
+docker run -p [port_in_computer:port_in_docker] [name_container]
+```
 -p port 
 
-* Connecting Volumes\
-docke run -v \${[path_in_local_computer]}:[path_in_conatiner] [name_container]\
-docke run -v \${PWD}:[path_in_conatiner] [name_container]\
+* Connecting Volumes
+```shell
+docke run -v \${[path_in_local_computer]}:[path_in_conatiner] [name_container]
+
+docke run -v \${PWD}:[path_in_conatiner] [name_container]
+```
 -v volum\
 Exampl: docker run -v ${PWD}:/usr/share/nginx/html -p 8080:80 -d nginx
 
 * Automatic docker remover
-dokcer run --rm [] [name_container]\
+```shell
+dokcer run --rm [] [name_container]
+```
 --rm \
 Exampl: docker run -it --rm busybox
 
 * One form of recording large commands\
-docker run \\ \
---name my-nginx \\ \
--v \${PWD}:/usr/share/nginx/html \\ \
--p 8888:80 \\ \
--d \\ \
---rm \\ \
-nginx\
+```shell
+docker run \
+--name my-nginx \
+-v \${PWD}:/usr/share/nginx/html \
+-p 8888:80 \
+-d \
+--rm \
+nginx
+```
 !!! working only linux and mack !!!
